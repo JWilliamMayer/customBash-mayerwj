@@ -5,11 +5,10 @@ function show_help() {
   echo "Usage: $0 [OPTIONS] <logfile>"
   echo "Options:"
   echo "  -h                Show this help message."
-  echo "  -p <pattern>      Provide a pattern (regex) to search for in the log file."
-  echo "  -c                Count the number of matches found."
+  echo "  -p <pattern>      Provide a pattern in order to search for in the log file."
+  echo "  -c                Count the number of matches."
 }
 
-# Function to handle errors
 function error_message() {
   echo "Error: $1"
   echo "Use -h for help."
@@ -21,7 +20,6 @@ if [[ $# -eq 0 ]]; then
   error_message "No arguments provided."
 fi
 
-# Initialize variables
 pattern=""
 count_matches=0
 logfile=""
@@ -59,7 +57,7 @@ elif [[ ! -f "$logfile" ]]; then
 fi
 
 if [[ -z "$pattern" ]]; then
-  error_message "No pattern provided. Use -p to specify a pattern."
+  error_message "No pattern provided. You have to use -p to specify a pattern."
 fi
 
 # Perform the search
